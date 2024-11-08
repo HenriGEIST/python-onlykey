@@ -2,6 +2,7 @@
 from __future__ import unicode_literals, print_function
 from __future__ import absolute_import
 
+from typing import Union
 from builtins import input
 from builtins import next
 from builtins import range
@@ -28,6 +29,34 @@ import nacl.signing
 from .client import OnlyKey, Message, MessageField
 
 only_key = OnlyKey()
+
+
+def get_slot_id (slot_name: str) -> Union[int | None]:
+    if   slot_name == 'RSA1':   return 1
+    elif slot_name == 'RSA2':   return 2
+    elif slot_name == 'RSA3':   return 3
+    elif slot_name == 'RSA4':   return 4
+    elif slot_name == 'ECC1':   return 101
+    elif slot_name == 'ECC2':   return 102
+    elif slot_name == 'ECC3':   return 103
+    elif slot_name == 'ECC4':   return 104
+    elif slot_name == 'ECC5':   return 105
+    elif slot_name == 'ECC6':   return 106
+    elif slot_name == 'ECC7':   return 107
+    elif slot_name == 'ECC8':   return 108
+    elif slot_name == 'ECC9':   return 109
+    elif slot_name == 'ECC10':  return 110
+    elif slot_name == 'ECC11':  return 111
+    elif slot_name == 'ECC12':  return 112
+    elif slot_name == 'ECC13':  return 113
+    elif slot_name == 'ECC14':  return 114
+    elif slot_name == 'ECC15':  return 115
+    elif slot_name == 'ECC16':  return 116
+    elif slot_name == 'HMAC1':  return 130
+    elif slot_name == 'HMAC2':  return 129
+    elif slot_name == 'BACKUP': return 131
+    else:                       return None
+
 
 def cli():
 
@@ -356,51 +385,7 @@ def cli():
             only_key.wipeslot(slot_id)
         elif sys.argv[1] == 'setkey' or sys.argv[1] == 'genkey':
             try:
-                slot_id = 0
-                if sys.argv[2] == 'RSA1':
-                    slot_id = 1
-                elif sys.argv[2] == 'RSA2':
-                    slot_id = 2
-                elif sys.argv[2] == 'RSA3':
-                    slot_id = 3
-                elif sys.argv[2] == 'RSA4':
-                    slot_id = 4
-                elif sys.argv[2] == 'ECC1':
-                    slot_id = 101
-                elif sys.argv[2] == 'ECC2':
-                    slot_id = 102
-                elif sys.argv[2] == 'ECC3':
-                    slot_id = 103
-                elif sys.argv[2] == 'ECC4':
-                    slot_id = 104
-                elif sys.argv[2] == 'ECC5':
-                    slot_id = 105
-                elif sys.argv[2] == 'ECC6':
-                    slot_id = 106
-                elif sys.argv[2] == 'ECC7':
-                    slot_id = 107
-                elif sys.argv[2] == 'ECC8':
-                    slot_id = 108
-                elif sys.argv[2] == 'ECC9':
-                    slot_id = 109
-                elif sys.argv[2] == 'ECC10':
-                    slot_id = 110
-                elif sys.argv[2] == 'ECC11':
-                    slot_id = 111
-                elif sys.argv[2] == 'ECC12':
-                    slot_id = 112
-                elif sys.argv[2] == 'ECC13':
-                    slot_id = 113
-                elif sys.argv[2] == 'ECC14':
-                    slot_id = 114
-                elif sys.argv[2] == 'ECC15':
-                    slot_id = 115
-                elif sys.argv[2] == 'ECC16':
-                    slot_id = 116
-                elif sys.argv[2] == 'HMAC1':
-                    slot_id = 130
-                elif sys.argv[2] == 'HMAC2':
-                    slot_id = 129
+                slot_id = get_slot_id (sys.argv[2])
                 if (sys.argv[1]=='genkey'):
                     if (slot_id > 100 and (sys.argv[3] == 'x' or sys.argv[3] == 'n' or sys.argv[3] == 's')):
                         only_key.setkey(slot_id, sys.argv[3], sys.argv[4], 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
@@ -420,50 +405,7 @@ def cli():
                 return
         elif sys.argv[1] == 'wipekey':
             try:
-                if sys.argv[2] == 'RSA1':
-                    slot_id = 1
-                elif sys.argv[2] == 'RSA2':
-                    slot_id = 2
-                elif sys.argv[2] == 'RSA3':
-                    slot_id = 3
-                elif sys.argv[2] == 'RSA4':
-                    slot_id = 4
-                elif sys.argv[2] == 'ECC1':
-                    slot_id = 101
-                elif sys.argv[2] == 'ECC2':
-                    slot_id = 102
-                elif sys.argv[2] == 'ECC3':
-                    slot_id = 103
-                elif sys.argv[2] == 'ECC4':
-                    slot_id = 104
-                elif sys.argv[2] == 'ECC5':
-                    slot_id = 105
-                elif sys.argv[2] == 'ECC6':
-                    slot_id = 106
-                elif sys.argv[2] == 'ECC7':
-                    slot_id = 107
-                elif sys.argv[2] == 'ECC8':
-                    slot_id = 108
-                elif sys.argv[2] == 'ECC9':
-                    slot_id = 109
-                elif sys.argv[2] == 'ECC10':
-                    slot_id = 110
-                elif sys.argv[2] == 'ECC11':
-                    slot_id = 111
-                elif sys.argv[2] == 'ECC12':
-                    slot_id = 112
-                elif sys.argv[2] == 'ECC13':
-                    slot_id = 113
-                elif sys.argv[2] == 'ECC14':
-                    slot_id = 114
-                elif sys.argv[2] == 'ECC15':
-                    slot_id = 115
-                elif sys.argv[2] == 'ECC16':
-                    slot_id = 116
-                elif sys.argv[2] == 'HMAC1':
-                    slot_id = 130
-                elif sys.argv[2] == 'HMAC2':
-                    slot_id = 129
+                slot_id = get_slot_id (sys.argv[2])
             except:
                 print("wipekey [key id] [type]")
                 print("[key id] must be a supported key number")
@@ -885,50 +827,7 @@ def cli():
                 only_key.wipeslot(slot_id)
             elif data[0] == 'setkey' or data[0] == 'genkey':
                 try:
-                    if data[1] == 'RSA1':
-                        slot_id = 1
-                    elif data[1] == 'RSA2':
-                        slot_id = 2
-                    elif data[1] == 'RSA3':
-                        slot_id = 3
-                    elif data[1] == 'RSA4':
-                        slot_id = 4
-                    elif data[1] == 'ECC1':
-                        slot_id = 101
-                    elif data[1] == 'ECC2':
-                        slot_id = 102
-                    elif data[1] == 'ECC3':
-                        slot_id = 103
-                    elif data[1] == 'ECC4':
-                        slot_id = 104
-                    elif data[1] == 'ECC5':
-                        slot_id = 105
-                    elif data[1] == 'ECC6':
-                        slot_id = 106
-                    elif data[1] == 'ECC7':
-                        slot_id = 107
-                    elif data[1] == 'ECC8':
-                        slot_id = 108
-                    elif data[1] == 'ECC9':
-                        slot_id = 109
-                    elif data[1] == 'ECC10':
-                        slot_id = 110
-                    elif data[1] == 'ECC11':
-                        slot_id = 111
-                    elif data[1] == 'ECC12':
-                        slot_id = 112
-                    elif data[1] == 'ECC13':
-                        slot_id = 113
-                    elif data[1] == 'ECC14':
-                        slot_id = 114
-                    elif data[1] == 'ECC15':
-                        slot_id = 115
-                    elif data[1] == 'ECC16':
-                        slot_id = 116
-                    elif data[1] == 'HMAC1':
-                        slot_id = 130
-                    elif data[1] == 'HMAC2':
-                        slot_id = 129
+                    slot_id = get_slot_id (data[1])
                 except:
                     print("setkey [key id] [type] [features]")
                     print("[key id] must be a supported key number")
@@ -954,50 +853,7 @@ def cli():
                     continue
             elif data[0] == 'wipekey':
                 try:
-                    if data[1] == 'RSA1':
-                        slot_id = 1
-                    elif data[1] == 'RSA2':
-                        slot_id = 2
-                    elif data[1] == 'RSA3':
-                        slot_id = 3
-                    elif data[1] == 'RSA4':
-                        slot_id = 4
-                    elif data[1] == 'ECC1':
-                        slot_id = 101
-                    elif data[1] == 'ECC2':
-                        slot_id = 102
-                    elif data[1] == 'ECC3':
-                        slot_id = 103
-                    elif data[1] == 'ECC4':
-                        slot_id = 104
-                    elif data[1] == 'ECC5':
-                        slot_id = 105
-                    elif data[1] == 'ECC6':
-                        slot_id = 106
-                    elif data[1] == 'ECC7':
-                        slot_id = 107
-                    elif data[1] == 'ECC8':
-                        slot_id = 108
-                    elif data[1] == 'ECC9':
-                        slot_id = 109
-                    elif data[1] == 'ECC10':
-                        slot_id = 110
-                    elif data[1] == 'ECC11':
-                        slot_id = 111
-                    elif data[1] == 'ECC12':
-                        slot_id = 112
-                    elif data[1] == 'ECC13':
-                        slot_id = 113
-                    elif data[1] == 'ECC14':
-                        slot_id = 114
-                    elif data[1] == 'ECC15':
-                        slot_id = 115
-                    elif data[1] == 'ECC16':
-                        slot_id = 116
-                    elif data[1] == 'HMAC1':
-                        slot_id = 130
-                    elif data[1] == 'HMAC2':
-                        slot_id = 129
+                    slot_id = get_slot_id (data[1])
                 except:
                     print("wipekey [key id] [type]")
                     print("[key id] must be a supported key number")
