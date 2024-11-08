@@ -114,7 +114,7 @@ def cli():
                 print(only_key.read_string())
                 print ()
         elif sys.argv[1] == 'getlabels':
-            tmp = {}      
+            tmp = {}
             only_key.set_time(time.time())
             okversion = only_key.read_string()
             if okversion[19] == 'c':
@@ -251,7 +251,7 @@ def cli():
             elif sys.argv[3] == 'delay3':
                 only_key.setslot(slot_id, MessageField.DELAY3, sys.argv[4])
             elif sys.argv[3] == '2fa':
-                 only_key.setslot(slot_id, MessageField.TFATYPE, sys.argv[4])
+                only_key.setslot(slot_id, MessageField.TFATYPE, sys.argv[4])
             elif sys.argv[3] == 'gkey':
                 totpkey = prompt_key()
                 totpkey = base64.b32decode("".join(totpkey.split()).upper())
@@ -470,31 +470,31 @@ def cli():
                 return
             only_key.wipekey(slot_id)
         elif sys.argv[1] == 'idletimeout':
-             only_key.setslot(1, MessageField.IDLETIMEOUT, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.IDLETIMEOUT, int(sys.argv[2]))
         elif sys.argv[1] == 'wipemode':
-             only_key.setslot(1, MessageField.WIPEMODE, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.WIPEMODE, int(sys.argv[2]))
         elif sys.argv[1] == 'keytypespeed':
-             only_key.setslot(99, MessageField.KEYTYPESPEED, int(sys.argv[2]))
+            only_key.setslot(99, MessageField.KEYTYPESPEED, int(sys.argv[2]))
         elif sys.argv[1] == 'ledbrightness':
-             only_key.setslot(1, MessageField.LEDBRIGHTNESS, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.LEDBRIGHTNESS, int(sys.argv[2]))
         elif sys.argv[1] == 'touchsense':
             only_key.setslot(1, MessageField.TOUCHSENSE, int(sys.argv[2]))
         elif sys.argv[1] == '2ndprofilemode':
-             only_key.setslot(1, MessageField.SECPROFILEMODE, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.SECPROFILEMODE, int(sys.argv[2]))
         elif sys.argv[1] == 'storedkeymode':
-             only_key.setslot(1, MessageField.PGPCHALENGEMODE, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.PGPCHALENGEMODE, int(sys.argv[2]))
         elif sys.argv[1] == 'derivedkeymode':
-             only_key.setslot(1, MessageField.SSHCHALENGEMODE, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.SSHCHALENGEMODE, int(sys.argv[2]))
         elif sys.argv[1] == 'backupkeymode':
-             only_key.setslot(1, MessageField.BACKUPMODE, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.BACKUPMODE, int(sys.argv[2]))
         elif sys.argv[1] == 'keylayout':
-             only_key.setslot(1, MessageField.KEYLAYOUT, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.KEYLAYOUT, int(sys.argv[2]))
         elif sys.argv[1] == 'sysadminmode':
-             only_key.setslot(1, MessageField.SYSADMINMODE, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.SYSADMINMODE, int(sys.argv[2]))
         elif sys.argv[1] == 'lockbutton':
-             only_key.setslot(1, MessageField.LOCKBUTTON, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.LOCKBUTTON, int(sys.argv[2]))
         elif sys.argv[1] == 'hmackeymode':
-             only_key.setslot(1, MessageField.HMACMODE, int(sys.argv[2]))
+            only_key.setslot(1, MessageField.HMACMODE, int(sys.argv[2]))
         elif sys.argv[1] == 'version':
             print('OnlyKey CLI v1.2.10')
         elif sys.argv[1] == 'fwversion':
@@ -644,7 +644,7 @@ def cli():
                     print(only_key.read_string())
                     print()
             elif data[0] == 'getlabels':
-                tmp = {}      
+                tmp = {}
                 only_key.set_time(time.time())
                 okversion = only_key.read_string()
                 if okversion[19] == 'c':
@@ -780,7 +780,7 @@ def cli():
                 elif data[2] == 'delay3':
                     only_key.setslot(slot_id, MessageField.DELAY3, data[3])
                 elif data[2] == '2fa':
-                     only_key.setslot(slot_id, MessageField.TFATYPE, data[3])
+                    only_key.setslot(slot_id, MessageField.TFATYPE, data[3])
                 elif data[2] == 'gkey':
                     totpkey = prompt_key()
                     totpkey = base64.b32decode("".join(totpkey.split()).upper())
